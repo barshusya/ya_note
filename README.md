@@ -12,31 +12,30 @@ The purpose of this project is to prepare tests for checking content, logic and 
 
 [//]: # (тесты, касающиеся отображения контента. Какие данные на каких страницах отображаются, какие при этом используются шаблоны, как работает пагинатор)
 
-- [ ] Количество заметок в списке заметок не более 10
-- [ ] Заметки отсортированы от самой свежей к самой старой. Свежие заметки в начале списка
-- [ ] Анонимному пользователю недоступна страница создания заметки, а авторизованному доступна
+- [x] The individual note is passed to the notes list page in the object_list list within the context dictionary;
+- [x] Notes from one user are not included in the list of notes for another user;
+- [x] The creation and editing pages for a note receive forms.
 
-### test_logic 🧐
+### test_logic 💡
 
 [//]: # (тестирование бизнес-логики приложения. Как обрабатываются те или иные формы, разрешено ли создание объектов с неуникальными полями, как работает специфичная логика конкретного приложения)
 
-- [ ] Авторизованный пользователь может создать заметку
-- [ ] Авторизованный пользователь может редактировать и удалять заметки
-- [ ] Анонимный пользователь не может создать заметку
+- [x] A logged-in user can create a note, while an anonymous user cannot;
+- [x] It is not possible to create two notes with the same slug;
+- [x] If the slug is not filled in when creating a note, it is automatically generated using the pytils.translit.slugify function;
+- [x] A user can edit and delete their own notes, but cannot edit or delete notes from others.
 
-### test_routes 🚲
+### test_routes 📍
 
 [//]: # (тесты доступности конкретных эндпоинтов, проверка редиректов, кодов ответа, которые возвращают страницы, тестирование доступа для авторизованных или анонимных пользователей)
 
-- [ ] Главная страница доступна анонимному пользователю
-- [ ] Страница отдельной заметки доступна только автору
-- [ ] Страница редактирования и удаления записи доступны автору
-- [ ] При попытке перейти на страницу редактирования или удаления чужой заметки пользователь перенаправляется на страницу авторизации
-- [ ] Страницы регистрации пользователей, входа в учётную запись и выхода из неё доступны анонимным пользователям
-- [ ] При попытке открыть несуществующую запись вернется ошибка 404
-- [ ] При незаполненном поле slug для страницы заметки используется транслитерированное название заметки
+- [x] The main page is available to anonymous users;
+- [x] Authenticated users have access to the notes/ page, which contains a list of notes, the done/ page for successful note additions, and the add/ page for adding a new note;
+- [x] Pages for individual note viewing, note deletion, and note editing are only accessible to the note's author. If another user tries to access these pages, a 404 error will be returned;
+- [x] When attempting to access the notes list page, the successful note addition page, the note addition page, the individual note page, or the note editing/deletion pages, an anonymous user will be redirected to the login page;
+- [x] User registration, account login, and logout pages are accessible to all users.
 
-### not for tests
+### not for tests 🚫
 
 - users registration
 - admin zone
